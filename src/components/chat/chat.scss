@@ -1,0 +1,430 @@
+@import "../../responsive.scss";
+
+.chat {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  min-width: 0;
+  padding: 10px 0;
+  margin-top: 18px;
+  flex: 1 1 auto;
+  overflow: hidden;
+
+  @include lg {
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  @include md {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    height: auto;
+  }
+
+  @include sm {
+    height: auto;
+  }
+
+  &.mobile {
+    flex-direction: column;
+    width: 100%;
+
+    .messages {
+      flex: none;
+      max-height: none;
+      width: 100%;
+      height: auto;
+    }
+
+    .chatBox {
+      flex: 1 1 auto;
+      min-height: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .chatPlaceholder,
+    .chatBox {
+      height: auto;
+      min-height: 0;
+    }
+  }
+
+  .messages {
+    flex: 0 0 320px;
+    width: min(320px, 100%);
+    min-width: 0;
+    max-width: 100%;
+    min-height: 0;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    border: 1px solid #f0e3c4;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
+
+    @include lg {
+      flex: 0 0 280px;
+      width: min(280px, 100%);
+    }
+
+    .emptyChats {
+      color: #666;
+      background-color: #faf7f3;
+      border: 1px dashed #ffe0a1;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .message {
+      background-color: white;
+      padding: 16px;
+      border-radius: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      border: 1px solid #f3e5c0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .text {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        span {
+          font-weight: bold;
+          color: #222;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        p {
+          color: #666;
+          overflow-wrap: break-word;
+          white-space: normal;
+        }
+      }
+    }
+  }
+
+  .chatPlaceholder,
+  .chatBox {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0e3c4;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
+    max-height: 100%;
+
+    @include lg {
+      min-height: 480px;
+    }
+
+    @include md {
+      min-height: 520px;
+      width: 100%;
+      height: auto;
+    }
+
+    @include sm {
+      min-height: 0;
+    }
+  }
+
+  .chatPlaceholder {
+    flex: 0 0 320px;
+    width: min(320px, 100%);
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    background:
+      radial-gradient(circle at top, rgba(247, 193, 75, 0.18), transparent 48%),
+      linear-gradient(180deg, #fffaf1 0%, #ffffff 72%);
+
+    @include lg {
+      flex: 0 0 280px;
+      width: min(280px, 100%);
+    }
+
+    @include sm {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #2e2a23;
+      margin-bottom: 10px;
+    }
+
+    p {
+      max-width: 360px;
+      color: #666;
+      line-height: 1.5;
+    }
+  }
+
+  .chatBox {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .top {
+      background: linear-gradient(135deg, #fce6a8 0%, #f7c14b85 100%);
+      padding: 18px 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(160, 124, 30, 0.16);
+      box-shadow: inset 0 -1px 0 rgba(160, 124, 30, 0.08);
+
+      @include lg {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+
+      @include md {
+        padding: 16px 18px;
+      }
+
+      @include sm {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+
+        .back {
+          border: none;
+          background-color: transparent;
+          color: #3e2f0a;
+          cursor: pointer;
+          font: inherit;
+          font-size: 14px;
+          font-weight: 700;
+          padding: 0;
+        }
+
+        img {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        span:last-child {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          min-width: 0;
+          max-width: 100%;
+        }
+      }
+
+      .close {
+        border: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 999px;
+        color: #3e2f0a;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        padding: 10px 16px;
+
+        @include lg {
+          padding: 8px 12px;
+        }
+      }
+    }
+
+    .center {
+      flex: 1 1 0;
+      min-height: 0;
+      height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 20px 20px 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background:
+        linear-gradient(180deg, rgba(250, 247, 243, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+
+      @include md {
+        padding: 18px 18px 150px;
+      }
+
+      @include sm {
+        padding: 16px 14px 170px;
+      }
+
+      .chatMessage {
+        max-width: min(75%, 720px);
+        width: auto;
+        padding: 14px 18px;
+        border-radius: 18px;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+
+        @include md {
+          max-width: 100%;
+        }
+
+        p {
+          margin: 0;
+          white-space: pre-wrap;
+          line-height: 1.5;
+        }
+
+        &.own {
+          align-self: flex-end;
+          text-align: right;
+          background-color: #f7c14b39;
+        }
+
+        span {
+          font-size: 11px;
+          color: #777;
+        }
+      }
+    }
+
+    .bottom {
+      border-top: 1px solid rgba(160, 124, 30, 0.16);
+      padding: 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      background-color: #fffdf8;
+
+      @include lg {
+        padding: 12px;
+        gap: 10px;
+      }
+
+      @include sm {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 16px;
+        background-color: #fffdf8;
+      }
+
+      textarea {
+        flex: 1;
+        min-width: 0;
+        min-height: 58px;
+        max-height: 150px;
+        border: 1px solid #ead9a4;
+        border-radius: 18px;
+        padding: 14px 16px;
+        resize: none;
+        font: inherit;
+        line-height: 1.45;
+        background-color: #fffdf8;
+        color: #2f2b20;
+
+        &::placeholder {
+          color: #a18f71;
+        }
+
+        @include sm {
+          width: 100%;
+          min-height: 96px;
+        }
+      }
+
+      button {
+        flex: 0 0 auto;
+        min-width: 120px;
+        padding: 0 24px;
+        background: linear-gradient(135deg, #f7c14b 0%, #e2a826 100%);
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 18px;
+        color: #2d2308;
+        font-size: 16px;
+        box-shadow: 0 12px 24px rgba(226, 168, 38, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        @include lg {
+          min-width: 100px;
+          padding: 0 20px;
+          font-size: 15px;
+        }
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 14px 28px rgba(226, 168, 38, 0.32);
+        }
+
+        @include sm {
+          width: 100%;
+          min-height: 56px;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
