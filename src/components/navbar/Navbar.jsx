@@ -22,7 +22,7 @@ function Navbar() {
       <div className="left">
         <Link to="/" className="logo">
           <img src="/logo.png" alt="" />
-          <span>aku Estate</span>
+          <span>fcityonline Estate</span>
         </Link>
         <Link to="/">Home</Link>
         <Link to="/">About</Link>

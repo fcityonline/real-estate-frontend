@@ -79,7 +79,7 @@ function SinglePage() {
   return (
     <>
       <Helmet>
-        <title>{post.title} | aku Estate</title>
+        <title>{post.title} | fcityonline Estate</title>
         <meta
           name="description"
           content={DOMPurify.sanitize(post.postDetail.desc)?.slice(0, 160)}
