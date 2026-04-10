@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -21,4 +27,43 @@ body{
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fff;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Improve button and input touch targets on mobile */
+button, 
+input[type="button"], 
+input[type="submit"],
+select,
+textarea {
+  @media (max-width: 768px) {
+    min-height: 44px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

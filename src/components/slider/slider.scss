@@ -6,12 +6,22 @@
   display: flex;
   gap: 20px;
 
+  @include lg {
+    height: 300px;
+  }
+
+  @include md {
+    height: 250px;
+  }
+
   @include sm {
-    height: 280px;
+    flex-direction: column;
+    height: auto;
+    gap: 12px;
   }
 
   .fullSlider {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -27,16 +37,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0 16px;
+      cursor: pointer;
+      z-index: 10000;
 
       img {
         width: 50px;
+        height: auto;
+        max-height: 80px;
+        transition: scale 0.3s ease;
+
+        @include lg {
+          width: 40px;
+        }
 
         @include md {
-          width: 30px;
+          width: 32px;
         }
 
         @include sm {
-          width: 20px;
+          width: 24px;
+        }
+
+        &:hover {
+          scale: 1.1;
         }
 
         &.right {
@@ -44,25 +68,52 @@
         }
       }
     }
+
     .imgContainer {
       flex: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
 
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
 
     .close {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 20px;
+      right: 20px;
       color: white;
       font-size: 36px;
       font-weight: bold;
-      padding: 50px;
+      padding: 20px;
       cursor: pointer;
+      z-index: 10001;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+
+      @include sm {
+        top: 10px;
+        right: 10px;
+        font-size: 28px;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
     }
   }
 
@@ -72,31 +123,55 @@
     object-fit: cover;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 
   .bigImage {
     flex: 3;
 
     @include sm {
-      flex: 2;
+      flex: 1;
+      height: 250px;
     }
   }
+
   .smallImages {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: 12px;
+
+    @include md {
+      gap: 10px;
+    }
 
     @include sm {
+      flex-direction: row;
+      height: auto;
       flex: 1;
+      gap: 8px;
     }
 
     img {
       height: 100px;
+      flex: 1;
+
+      @include lg {
+        height: 80px;
+      }
+
+      @include md {
+        height: 70px;
+      }
 
       @include sm {
         height: 80px;
+        width: 100%;
       }
     }
   }

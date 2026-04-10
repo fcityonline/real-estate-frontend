@@ -1,11 +1,18 @@
+@import "../../responsive.scss";
+
 .filter {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 
   h1 {
     font-weight: 300;
     font-size: 24px;
+
+    @include sm {
+      font-size: 18px;
+    }
   }
 
   .item {
@@ -14,16 +21,30 @@
     gap: 2px;
 
     label {
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
     }
 
     input,
     select {
-      width: 100px;
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
       border: 1px solid #e0e0e0;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 14px;
+      min-height: 44px;
+      transition: border-color 0.3s ease;
+
+      @include sm {
+        padding: 12px 10px;
+        font-size: 14px;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: teal;
+      }
     }
   }
 
@@ -37,18 +58,37 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 12px;
+
+    @include sm {
+      gap: 8px;
+    }
 
     button {
-      width: 100px;
-      padding: 10px;
+      flex: 1;
+      min-width: 100px;
+      padding: 12px;
       border: none;
       cursor: pointer;
       background-color: #fece51;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      min-height: 44px;
+
+      @include sm {
+        min-width: 80px;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      &:hover {
+        background-color: #fec24d;
+      }
 
       img {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
       }
     }
   }

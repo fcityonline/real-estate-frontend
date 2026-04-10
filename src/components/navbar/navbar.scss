@@ -7,7 +7,19 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 51px 1px;
+  padding: 16px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @include md {
+    height: 80px;
+    padding: 12px 16px;
+  }
+
+  @include sm {
+    height: 70px;
+    padding: 12px 12px;
+  }
 
   a {
     transition: all 0.4s ease;
@@ -31,7 +43,16 @@ nav {
     flex: 3;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
+    min-width: 0;
+
+    @include md {
+      gap: 24px;
+    }
+
+    @include sm {
+      gap: 16px;
+    }
 
     .logo {
       font-weight: bold;
@@ -39,9 +60,25 @@ nav {
       display: flex;
       align-items: center;
       gap: 10px;
+      white-space: nowrap;
+
+      @include md {
+        font-size: 18px;
+      }
+
+      @include sm {
+        font-size: 16px;
+        gap: 6px;
+      }
 
       img {
         width: 28px;
+        height: 28px;
+
+        @include sm {
+          width: 24px;
+          height: 24px;
+        }
       }
 
       span {
@@ -55,6 +92,7 @@ nav {
       }
     }
   }
+
   .right {
     flex: 2;
     display: flex;
@@ -63,18 +101,33 @@ nav {
     background-color: #fcf5f3;
     height: 100%;
     position: relative;
+    gap: 8px;
 
     @include md {
       background-color: transparent;
-    }
-
-    @include sm {
       gap: 12px;
     }
 
+    @include sm {
+      gap: 8px;
+    }
+
     a {
-      padding: 12px 24px;
-      margin: 20px;
+      padding: 12px 20px;
+      margin: 0;
+      font-size: 14px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+
+      @include md {
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      @include sm {
+        display: none;
+      }
     }
 
     .user{

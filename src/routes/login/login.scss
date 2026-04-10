@@ -1,49 +1,110 @@
+@import "../../responsive.scss";
+
 .login {
-  height: 100%;
+  min-height: 100vh;
   display: flex;
+  flex-direction: row;
+
+  @include md {
+    flex-direction: column;
+  }
 
   .formContainer {
     flex: 3;
     height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+
+    @include md {
+      min-height: auto;
+      padding: 40px 20px;
+    }
+
+    @include sm {
+      padding: 30px 20px;
+    }
 
     form {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 100%;
+      max-width: 400px;
 
-      input{
-        padding: 20px;
-        border: 1px solid gray;
-        border-radius: 5px;
+      @include sm {
+        max-width: 100%;
+        gap: 16px;
       }
 
-      button{
-        padding: 20px;
-        border-radius: 5px;
+      input {
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        min-height: 48px;
+        transition: border-color 0.3s ease;
+
+        @include sm {
+          padding: 14px;
+          font-size: 16px;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: teal;
+          box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+        }
+      }
+
+      button {
+        padding: 16px;
+        border-radius: 8px;
         border: none;
         background-color: teal;
         color: white;
         font-weight: bold;
+        font-size: 16px;
         cursor: pointer;
+        min-height: 48px;
+        transition: background-color 0.3s ease;
 
-        &:disabled{
+        @include sm {
+          padding: 14px;
+          font-size: 16px;
+        }
+
+        &:hover:not(:disabled) {
+          background-color: rgb(0, 102, 102);
+        }
+
+        &:disabled {
           background-color: #BED9D8;
           cursor: not-allowed;
         }
       }
 
-      span{
+      span {
         color: rgba(255, 0, 0, 0.591);
+        font-size: 14px;
       }
 
-      a{
+      a {
         font-size: 14px;
         color: gray;
         border-bottom: 1px solid gray;
         width: max-content;
+        transition: color 0.3s ease;
+
+        @include sm {
+          font-size: 13px;
+        }
+
+        &:hover {
+          color: teal;
+        }
       }
     }
   }
@@ -54,8 +115,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+
+    @include md {
+      display: none;
+    }
+
     img {
       width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: contain;
     }
   }
 }

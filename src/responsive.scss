@@ -1,17 +1,35 @@
-@mixin sm {
-  @media (max-width: 738px) {
+// Mobile-first breakpoints for responsive design
+// xs: Extra small devices (320px - 374px)
+@mixin xs {
+  @media (max-width: 374px) {
     @content;
   }
 }
 
+// sm: Small devices (375px - 640px) - Phones and small tablets
+@mixin sm {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+// md: Medium devices (641px - 1024px) - Tablets in portrait
 @mixin md {
   @media (max-width: 1024px) {
     @content;
   }
 }
 
+// lg: Large devices (1025px - 1366px) - Tablets in landscape, small desktops
 @mixin lg {
   @media (max-width: 1366px) {
+    @content;
+  }
+}
+
+// xl: Extra large devices (1367px+) - Large desktops
+@mixin xl {
+  @media (min-width: 1367px) {
     @content;
   }
 }
